@@ -1,8 +1,6 @@
-<html>
-<head>
-    <title>Document</title>
-</head>
-<body>
+@extends("layouts.app")
+
+@section("content")
     <h1>Listado productos</h1>
     <form action="/posts" method="POST">
 
@@ -20,4 +18,4 @@
         <br>
         <label for="brand">Marca:</label>
         <input type="text" id="brand" name="brand" required>
-</html>
+@endsection
