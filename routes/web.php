@@ -1,19 +1,14 @@
 <?php
 
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route :: get('products', function () {
-    return "Listado de productos";
-});
-
-Route :: get('products/create', function () {
-    return "Formulario de creación de productos";
-});
-
-Route :: get('products/{id}/{category?}', function ($idProducto, $category = "General") {
-    return "Detalle de cada producto {$idProducto} de la categoría {$category}";
+Route::prefix("product")->controller(ProductController::class)->group(function(){
+    Route::get('/', 'index' ) ->name('product.index');
+    Route::get('/create', 'create' ) ->name('product.create');
+    Route::get('/{id}/{category?}', 'getProduct' ) ->name('product.getProduct');
 });
