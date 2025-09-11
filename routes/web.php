@@ -7,8 +7,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::prefix("product")->controller(ProductController::class)->group(function(){
-    Route::get('/', 'index' ) ->name('product.index');
-    Route::get('/create', 'create' ) ->name('product.create');
-    Route::get('/{id}/{category?}', 'getProduct' ) ->name('product.getProduct');
+Route::prefix('product')->controller(ProductController::class)->group(function () {
+    Route::get('/', 'index')->name('product.index');
+    Route::get('/create', 'create')->name('product.create');
+    Route::post('/store', 'store')->name('product.store');
+    Route::get('/{id}/{category?}', 'getProduct')->name('product.getProduct');
 });
