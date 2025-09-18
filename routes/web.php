@@ -4,7 +4,7 @@ use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('product.index');
 });
 
 Route::prefix('product')->controller(ProductController::class)->group(function () {

@@ -1,25 +1,16 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ $product['name'] }} - Detalle</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        .price { color: #0a7d18; }
-        .thumbs img { cursor: pointer; border: 1px solid #ddd; }
-        .thumbs img.active { border-color: #0d6efd; }
-    </style>
-</head>
-<body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <div class="container">
-    <a class="navbar-brand" href="/">E-Commerce</a>
-  </div>
-</nav>
+@extends('layouts.app')
 
-<div class="container py-4">
+@section('title', $product['name'] . ' - Detalle')
+
+@push('head')
+<style>
+    .price { color: #0a7d18; }
+    .thumbs img { cursor: pointer; border: 1px solid #ddd; }
+    .thumbs img.active { border-color: #0d6efd; }
+</style>
+@endpush
+
+@section('content')
   <div class="mb-3">
     <a href="{{ url()->previous() ?? route('product.index') }}" class="btn btn-outline-secondary" onclick="if(window.history.length>1){event.preventDefault(); window.history.back();}">← Volver</a>
   </div>
@@ -53,13 +44,13 @@
       </div>
     </div>
   </div>
-</div>
+@endsection
+
+@push('scripts')
 <script>
   function setActive(img){
     document.querySelectorAll('.thumbs img').forEach(i=>i.classList.remove('active'));
     img.classList.add('active');
   }
 </script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+@endpush
