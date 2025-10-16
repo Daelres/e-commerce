@@ -13,3 +13,9 @@ Route::prefix('product')->controller(ProductController::class)->group(function (
     Route::post('/store', 'store')->name('product.store');
     Route::get('/{id}/{category?}', 'getProduct')->name('product.getProduct');
 });
+
+Auth::routes();
+
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//Route::get('/', [App\Http\Controllers\HomeController::class, 'welcome']);
