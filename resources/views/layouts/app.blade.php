@@ -65,6 +65,9 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto align-items-md-center">
+                        <li class="nav-item me-2">
+                            <a class="btn btn-outline-primary" href="{{ route('admin.index') }}">Admin</a>
+                        </li>
                         @guest
                             @if (Route::has('login'))
                                 <li class="nav-item me-2">

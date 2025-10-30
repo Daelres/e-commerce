@@ -9,7 +9,6 @@
                 <p class="lead text-muted mb-4">{{ __('Discover new arrivals, exclusive deals and continue where you left off.') }}</p>
                 <div class="d-flex gap-2">
                     <a href="{{ route('product.index') }}" class="btn btn-primary btn-lg">{{ __('Start shopping') }}</a>
-                    <a href="{{ url('/') }}" class="btn btn-outline-primary btn-lg">{{ __('Go to home') }}</a>
                 </div>
             </div>
             <div class="col-lg-5">

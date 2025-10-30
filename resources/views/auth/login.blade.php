@@ -5,6 +5,9 @@
     <div class="row justify-content-center align-items-center">
         <div class="col-lg-5 col-md-7">
             <div class="text-center mb-4">
+                <h1 class="h3 fw-bold mb-1">Admin</h1>
+            </div>
+            <div class="text-center mb-4">
                 <h1 class="h3 fw-bold mb-1">{{ __('Login') }}</h1>
                 <p class="text-muted small mb-0">{{ __('Access your account to continue shopping') }}</p>
             </div>
