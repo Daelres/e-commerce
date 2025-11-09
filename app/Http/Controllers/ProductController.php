@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Brand;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -44,7 +46,13 @@ class ProductController extends Controller
 
     public function create()
     {
-        return view('create');
+        $brands = Brand::all();
+        $categories = Category::all();
+
+        return view('admin.product.create', [
+            'brands' => $brands,
+            'categories' => $categories,
+        ]);
     }
 
     public function store(Request $request)
@@ -66,7 +74,8 @@ class ProductController extends Controller
         $products = $this->sampleProducts();
         $product = collect($products)->firstWhere('id', (int)$idProducto);
         if (!$product) {
-            abort(404);
+            return redirect()->route('product.index')
+                ->with('status', 'Producto no encontrado.');
         }
         return view('show', compact('product', 'category'));
     }

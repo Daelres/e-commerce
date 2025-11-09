@@ -2,23 +2,22 @@
 
 namespace Database\Factories;
 
-use App\Models\brand;
-use App\Models\category;
+use App\Models\Brand;
+use App\Models\Category;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-/**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Product>
- */
 class ProductFactory extends Factory
 {
     public function definition(): array
     {
+        $brand = Brand::inRandomOrder()->first();
+        $category = Category::inRandomOrder()->first();
         return [
             'name' => fake()->name(),
             'description' => fake()->paragraph(),
             'price' => fake()->randomFloat(2, 10000, 1000000),
-            'category_id' => category::factory(),
-            'brand_id' => brand::factory(),
+            'category_id' => $category ? $category->id : null,
+            'brand_id' => $brand ? $brand->id : null,
         ];
     }
 }

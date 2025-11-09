@@ -13,8 +13,8 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         $this->call([
-            CategorySeeder::class,
-            BrandSeeder::class
+            BrandSeeder::class,
+            CategorySeeder::class
         ]);
 
         Product::factory(1000)->create();

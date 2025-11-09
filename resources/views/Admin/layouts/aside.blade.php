@@ -15,15 +15,15 @@
         <ul class="navbar-nav">
             <li class="nav-item">
                 <a class="nav-link {{ Request::is('admin') ? 'active bg-gradient-dark text-white' : 'text-dark'}}"
-                   href="{{route('admin.index') }}">
+                   href="{{ route('admin.index') }}">
                     <i class="material-symbols-rounded opacity-5">dashboard</i>
                     <span class="nav-link-text ms-1">Dashboard</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-dark" href="../pages/tables.html">
+                <a class="nav-link {{ Request::is('admin/products/create') ? 'active bg-gradient-dark text-white' : 'text-dark'}}" href="{{ route('product.create') }}">
                     <i class="material-symbols-rounded opacity-5">table_view</i>
-                    <span class="nav-link-text ms-1">products</span>
+                    <span class="nav-link-text ms-1">Products</span>
                 </a>
             </li>
             <li class="nav-item">
