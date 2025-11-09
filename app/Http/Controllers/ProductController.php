@@ -45,7 +45,8 @@ class ProductController extends Controller
         return view('index', compact('products'));
     }
 
-    public function create()
+    //Obtiene la lista de categorías y marcas
+    public function getLists()
     {
         $brands = Brand::all();
         $categories = Category::all();
@@ -56,6 +57,16 @@ class ProductController extends Controller
         ]);
     }
 
+    //Obtiene el listado de productos
+    public function getProducts()
+    {
+        $products = Product::all();
+        return view('admin.product.table', [
+            'products' => $products
+        ]);
+    }
+
+    // Crear nuevo producto
     public function store(Request $request)
     {
         $request->validate([

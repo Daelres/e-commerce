@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * @method static inRandomOrder()
+ * @method static where(string $string, $id)
  */
 class Brand extends Model
 {

@@ -23,9 +23,11 @@ Route::prefix('admin')->group(function () {
     ///Vista de creación de categorías
     Route::get('/category/create', [CategoryController::class, 'create'])->name('admin.category.create');
     ///Vista de creación de productos
-    Route::get('products/create', [ProductController::class, 'create'])->name('product.create');
+    Route::get('products/create', [ProductController::class, 'getLists'])->name('product.create');
     ///Creación nuevo producto
     Route::post('products/store', [ProductController::class, 'store'])->name('admin.product.store');
+    ///Listado de productos
+    Route::get('products', [productController::class, 'getProducts'] )->name('admin.product.index');
 
     ///TODO: Documentar rutas
     Route::post('/category/store', [CategoryController::class, 'store'])->name('admin.category.store');
