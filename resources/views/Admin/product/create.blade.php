@@ -21,7 +21,7 @@
             <h2 class="card-title mb-0">Datos del producto</h2>
         </div>
         <div class="card-body">
-            <form action="{{ route('product.store') }}" method="POST">
+            <form action="{{ route('admin.product.store') }}" method="POST">
                 @csrf
                 <div class="mb-3">
                     <label for="name" class="form-label">Nombre</label>
@@ -48,7 +48,7 @@
                     </div>
                     <div class="col-md-4">
                         <label for="brand" class="form-label">Marca</label>
-                        <select class="form-control" id="productBrand">
+                        <select class="form-control" id="productBrand" name="productBrand">
                             <option value="" selected disabled> -- Marca --</option>
                             @foreach($brands as $brand)
                                 <option value="{{ $brand->id }}">{{ $brand->name }}</option>
@@ -59,7 +59,7 @@
                     </div>
                     <div class="col-md-4">
                         <label for="category" class="form-label">Categoria</label>
-                        <select class="form-control" id="productCategory">
+                        <select class="form-control" id="productCategory" name="productCategory">
                             <option value="" selected disabled> -- Categoria --</option>
                             @foreach($categories as $category)
                                 <option value="{{ $category->id }}">{{ $category->name }}</option>
@@ -68,16 +68,6 @@
                         @error('category')
                         <div class="invalid-feedback">{{ $message }}</div>@enderror
                     </div>
-                </div>
-                <div class="col">
-                    <label for="image" class="form-label">Imagen</label>
-                    <input type="file" accept="image/*" class="form-control @error('image') is-invalid @enderror"
-                           id="image" name="image">
-                    @error('image')
-                    <div class="invalid-feedback">{{ $message }}</div>@enderror
-
-                    <img id="imagePreview" src="#" alt="Vista previa" class="img-fluid mt-2 d-none"
-                         style="max-height:150px;">
                 </div>
                 <div class="mt-4">
                     <button type="submit" class="btn btn-primary">Enviar</button>

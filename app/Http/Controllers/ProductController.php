@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Brand;
 use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -57,16 +58,16 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
-        // No guardar en BD por ahora. Solo simular validación y mostrar mensaje.
-        $validated = $request->validate([
-            'name' => 'required|string|max:255',
-            'description' => 'required|string|max:1000',
-            'price' => 'required|numeric|min:0',
-            'brand' => 'required|string|max:255',
-            'image' => 'nullable|url',
-        ]);
+        $product = new Product();
+        $product->name = $request->input('name');
+        $product->description = $request->input('description');
+        $product->price = $request->input('price');
+        $product->brand_id = $request->input('productBrand');
+        $product->category_id = $request->input('productCategory');
 
-        return back()->with('status', 'Producto recibido (no guardado).');
+        $product->save();
+
+        return back()->with('status', 'Producto recibido.');
     }
 
     public function getProduct($idProducto, $category = 'General')

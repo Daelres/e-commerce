@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
+/**
+ * @property mixed $name
+ */
 class Product extends Model
 {
     use HasFactory;
@@ -13,11 +16,10 @@ class Product extends Model
     protected $table = 'products';
 
     protected $fillable = [
-        'name', 'price', 'description', 'category_id', 'brand_id'
+        'name',
+        'price',
+        'description',
+        'category_id',
+        'brand_id'
     ];
-
-    public function images(): HasMany
-    {
-        return $this->hasMany(ProductImage::class, 'product_id');
-    }
 }
