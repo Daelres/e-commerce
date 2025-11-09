@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * @method static inRandomOrder()
+ * @method static create(array $array)
  */
 class Category extends Model
 {
