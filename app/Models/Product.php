@@ -12,6 +12,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property mixed $price
  * @property mixed $brand_id
  * @property mixed $category_id
+ * @method static paginate(int $int)
+ * @method static orderBy(string $string, string $string1)
  */
 class Product extends Model
 {
@@ -23,6 +25,7 @@ class Product extends Model
         'name',
         'price',
         'description',
+        'image_path',
         'category_id',
         'brand_id'
     ];

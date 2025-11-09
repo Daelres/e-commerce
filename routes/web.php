@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\BrandController;
 use Illuminate\Support\Facades\Route;
 
 //Pagina principal
@@ -19,17 +20,27 @@ Route::prefix('admin')->group(function () {
     //Página principal del admin
     Route::get('/', [AdminController::class, 'index'])->name('admin.index');
 
-    //Rutas para parametrización del sistema
-    ///Vista de creación de categorías
-    Route::get('/category/create', [CategoryController::class, 'create'])->name('admin.category.create');
-    ///Vista de creación de productos
+    // PRODUCTS
+    Route::get('products', [ProductController::class, 'getProducts'])->name('admin.product.index');
     Route::get('products/create', [ProductController::class, 'getLists'])->name('product.create');
-    ///Creación nuevo producto
     Route::post('products/store', [ProductController::class, 'store'])->name('admin.product.store');
-    ///Listado de productos
-    Route::get('products', [productController::class, 'getProducts'] )->name('admin.product.index');
+    Route::get('products/{product}/edit', [ProductController::class, 'edit'])->name('admin.product.edit');
+    Route::put('products/{product}', [ProductController::class, 'update'])->name('admin.product.update');
+    Route::delete('products/{product}', [ProductController::class, 'destroy'])->name('admin.product.destroy');
 
-    ///TODO: Documentar rutas
-    Route::post('/category/store', [CategoryController::class, 'store'])->name('admin.category.store');
-    Route::post('products', [ProductController::class, 'store'])->name('product.store');
+    // CATEGORIES
+    Route::get('categories', [CategoryController::class, 'index'])->name('admin.category.index');
+    Route::get('category/create', [CategoryController::class, 'create'])->name('admin.category.create');
+    Route::post('category/store', [CategoryController::class, 'store'])->name('admin.category.store');
+    Route::get('category/{category}/edit', [CategoryController::class, 'edit'])->name('admin.category.edit');
+    Route::put('category/{category}', [CategoryController::class, 'update'])->name('admin.category.update');
+    Route::delete('category/{category}', [CategoryController::class, 'destroy'])->name('admin.category.destroy');
+
+    // BRANDS
+    Route::get('brands', [BrandController::class, 'index'])->name('admin.brand.index');
+    Route::get('brands/create', [BrandController::class, 'create'])->name('admin.brand.create');
+    Route::post('brands/store', [BrandController::class, 'store'])->name('admin.brand.store');
+    Route::get('brands/{brand}/edit', [BrandController::class, 'edit'])->name('admin.brand.edit');
+    Route::put('brands/{brand}', [BrandController::class, 'update'])->name('admin.brand.update');
+    Route::delete('brands/{brand}', [BrandController::class, 'destroy'])->name('admin.brand.destroy');
 });

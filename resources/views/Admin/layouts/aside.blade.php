@@ -3,7 +3,7 @@
     <div class="sidenav-header">
         <i class="fas fa-times p-3 cursor-pointer text-dark opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
            aria-hidden="true" id="iconSidenav"></i>
-        <a class="navbar-brand px-4 py-3 m-0" href=" https://demos.creative-tim.com/material-dashboard/pages/dashboard "
+        <a class="navbar-brand px-4 py-3 m-0" href="{{ route('home') }}"
            target="_blank">
             <img style="max-height: fit-content!important;" src="{{asset("assets/img/logos/LogoUNAB/unab_logo.png")}}"
                  alt="Ecommerce UNAB" class="img-fluid border-radius-lg shadow-sm">
@@ -21,20 +21,20 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link {{ Request::is('admin/products/create') ? 'active bg-gradient-dark text-white' : 'text-dark'}}" href="{{ route('product.create') }}">
+                <a class="nav-link {{ Request::is('admin/products*') ? 'active bg-gradient-dark text-white' : 'text-dark'}}" href="{{ route('admin.product.index') }}">
                     <i class="material-symbols-rounded opacity-5">table_view</i>
                     <span class="nav-link-text ms-1">Products</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link {{ Request::is('admin/category/create') ? 'active bg-gradient-dark text-white' : 'text-dark'}}"
-                   href="{{route('admin.category.create')}}">
+                <a class="nav-link {{ Request::is('admin/categories*') ? 'active bg-gradient-dark text-white' : 'text-dark'}}"
+                   href="{{route('admin.category.index')}}">
                     <i class="material-symbols-rounded opacity-5">receipt_long</i>
                     <span class="nav-link-text ms-1">Categories</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-dark" href="../pages/virtual-reality.html">
+                <a class="nav-link {{ Request::is('admin/brands*') ? 'active bg-gradient-dark text-white' : 'text-dark'}}" href="{{ route('admin.brand.index') }}">
                     <i class="material-symbols-rounded opacity-5">view_in_ar</i>
                     <span class="nav-link-text ms-1">Brands</span>
                 </a>

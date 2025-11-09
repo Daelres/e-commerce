@@ -1,15 +1,15 @@
 @extends('Admin.layouts.app')
-@section('title', 'Crear categoría')
+@section('title', 'Editar marca')
 
 @section('content')
     <div class="mb-3">
-        <a href="{{ route('admin.category.index') }}" class="btn btn-outline-secondary">
+        <a href="{{ route('admin.brand.index') }}" class="btn btn-outline-secondary">
             ← Volver
         </a>
     </div>
     <div class="d-flex align-items-center mb-4">
         <span class="accent-bar"></span>
-        <h1 class="page-title m-0">Crear categoría</h1>
+        <h1 class="page-title m-0">Editar marca</h1>
     </div>
 
     @if ($errors->any())
@@ -24,21 +24,22 @@
 
     <div class="card">
         <div class="card-header">
-            <h2 class="card-title mb-0">Datos de la categoría</h2>
+            <h2 class="card-title mb-0">Datos de la marca</h2>
         </div>
         <div class="card-body">
-            <form action="{{ route('admin.category.store') }}" method="POST">
+            <form action="{{ route('admin.brand.update', $brand->id) }}" method="POST">
                 @csrf
+                @method('PUT')
                 <div class="mb-3">
                     <label for="name" class="form-label">Nombre</label>
                     <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name"
-                           value="{{ old('name') }}" required>
+                           value="{{ old('name', $brand->name) }}" required>
                     @error('name')
                     <div class="invalid-feedback">{{ $message }}</div>@enderror
                 </div>
                 <div class="mt-4">
-                    <button type="submit" class="btn btn-primary">Guardar</button>
-                    <a href="{{ route('admin.category.index') }}" class="btn btn-secondary">Cancelar</a>
+                    <button type="submit" class="btn btn-primary">Guardar cambios</button>
+                    <a href="{{ route('admin.brand.index') }}" class="btn btn-secondary">Cancelar</a>
                 </div>
             </form>
         </div>
